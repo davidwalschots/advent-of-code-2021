@@ -17,7 +17,7 @@ fn number_of_increases(values: &Vec<u32>) -> usize {
 fn number_of_sliding_window_increases(values: &Vec<u32>) -> usize {
     let sliding_window_values: Vec<u32> = values
         .windows(3)
-        .map(|window| window[0] + window[1] + window[2])
+        .map(|window| window.iter().sum())
         .collect();
 
     number_of_increases(&sliding_window_values)
