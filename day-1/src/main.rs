@@ -1,12 +1,10 @@
-fn main() -> std::io::Result<()> {
+fn main() {
     let input_values = input_values();
     println!("increases: {}", number_of_increases(&input_values));
     println!(
         "sliding increases: {}",
         number_of_sliding_window_increases(&input_values)
     );
-
-    Ok(())
 }
 
 fn number_of_increases(values: &Vec<u32>) -> usize {
@@ -38,19 +36,19 @@ mod tests {
 
     #[test]
     fn counts_number_of_increases() {
-        let input: [u32; 10] = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263];
-
-        let result = number_of_increases(&input.to_vec());
+        let result = number_of_increases(&input().to_vec());
 
         assert_eq!(result, 7);
     }
 
     #[test]
     fn counts_number_of_increases_in_sliding_window() {
-        let input: [u32; 10] = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263];
-
-        let result = number_of_sliding_window_increases(&input.to_vec());
+        let result = number_of_sliding_window_increases(&input().to_vec());
 
         assert_eq!(result, 5);
+    }
+
+    fn input() -> [u32; 10] {
+        [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
     }
 }
